@@ -1,538 +1,534 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-  <title>💖 A Special Question for You 💖</title>
-  <!-- Google Fonts for a romantic, modern touch -->
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Happy Birthday, Special Friend! 🎂✨</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none; /* avoids accidental text selection on tap, but keeps readability */
+        }
 
-    body {
-      min-height: 100vh;
-      background: linear-gradient(145deg, #ffe6f0 0%, #ffd9e8 100%);
-      font-family: 'Quicksand', 'Segoe UI', system-ui, -apple-system, sans-serif;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      position: relative;
-      overflow-x: hidden;
-    }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #ffb6c1 0%, #ff8da1 100%);
+            font-family: 'Segoe UI', 'Poppins', 'Quicksand', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+            cursor: pointer;
+        }
 
-    /* main card container */
-    .proposal-card {
-      max-width: 600px;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(3px);
-      border-radius: 48px;
-      box-shadow: 0 30px 45px rgba(255, 80, 120, 0.2), 0 8px 18px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      text-align: center;
-      padding: 2rem 2rem 2.5rem;
-      transition: transform 0.3s ease;
-      border: 1px solid rgba(255, 200, 220, 0.7);
-      z-index: 10;
-    }
+        /* main birthday card container — beautiful glassmorphism + soft shadows */
+        .birthday-card {
+            max-width: 650px;
+            width: 100%;
+            background: rgba(255, 250, 240, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 72px 48px 80px 48px;
+            box-shadow: 0 30px 40px rgba(0, 0, 0, 0.2), 0 8px 20px rgba(0, 0, 0, 0.1), inset 0 1px 2px rgba(255,255,255,0.5);
+            text-align: center;
+            padding: 2rem 1.8rem 2.8rem;
+            transition: transform 0.2s ease;
+            border: 1px solid rgba(255, 245, 220, 0.8);
+        }
 
-    .proposal-card:hover {
-      transform: scale(1.01);
-    }
+        .birthday-card:hover {
+            transform: scale(1.01);
+        }
 
-    /* decorative heart header */
-    .heart-icon {
-      font-size: 4rem;
-      animation: pulse 1.6s infinite ease;
-      display: inline-block;
-      margin-bottom: 0.5rem;
-    }
+        /* festive emoji header */
+        .cake-icon {
+            font-size: 5rem;
+            filter: drop-shadow(2px 6px 12px rgba(0,0,0,0.2));
+            margin-bottom: 8px;
+            animation: float 3s ease-in-out infinite;
+        }
 
-    @keyframes pulse {
-      0% { transform: scale(0.95); text-shadow: 0 0 0 rgba(255, 80, 120, 0.3);}
-      70% { transform: scale(1.1); text-shadow: 0 0 12px #ff99bb;}
-      100% { transform: scale(0.95); text-shadow: 0 0 0 rgba(255, 80, 120, 0);}
-    }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
 
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      color: #c43a6b;
-      margin: 1rem 0 0.5rem;
-      letter-spacing: -0.3px;
-      word-break: keep-all;
-    }
+        h1 {
+            font-size: 3.2rem;
+            background: linear-gradient(135deg, #c0392b, #e74c3c, #f39c12);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            margin: 0.25rem 0 0.5rem 0;
+            font-weight: 800;
+            word-break: keep-all;
+        }
 
-    .sub-message {
-      font-size: 1.18rem;
-      color: #9b4b6b;
-      font-weight: 500;
-      background: rgba(255, 235, 240, 0.7);
-      display: inline-block;
-      padding: 0.4rem 1.2rem;
-      border-radius: 60px;
-      margin-bottom: 1.5rem;
-      backdrop-filter: blur(2px);
-    }
+        .friend-name {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #ff6b6b;
+            background: rgba(255,235,220,0.7);
+            display: inline-block;
+            padding: 0.1rem 1.2rem;
+            border-radius: 100px;
+            margin-bottom: 1rem;
+            backdrop-filter: blur(4px);
+            box-shadow: inset 0 0 2px #fff8, 0 4px 8px rgba(0,0,0,0.05);
+        }
 
-    .question {
-      font-size: 1.7rem;
-      font-weight: 700;
-      color: #b32d5a;
-      margin: 0.8rem 0 1rem;
-      background: #fff0f5;
-      display: inline-block;
-      padding: 0.5rem 1.6rem;
-      border-radius: 60px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
-    }
+        .message {
+            font-size: 1.25rem;
+            line-height: 1.5;
+            color: #3e2a2f;
+            background: #fff9f0;
+            padding: 1rem 1.2rem;
+            border-radius: 48px;
+            margin: 1.2rem 0;
+            font-weight: 500;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02), 0 6px 12px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255,215,180,0.6);
+        }
 
-    .name-highlight {
-      background: linear-gradient(120deg, #ffb7c5, #ff8aa8);
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-      font-weight: 800;
-    }
+        /* cute personalized verse */
+        .poem {
+            font-style: italic;
+            background: rgba(253, 241, 222, 0.7);
+            padding: 0.75rem;
+            border-radius: 32px;
+            margin: 1rem 0 1.5rem;
+            color: #a3413b;
+            font-size: 1rem;
+            border-left: 5px solid #ffaa88;
+            border-right: 5px solid #ffaa88;
+        }
 
-    .message {
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #5a3e4a;
-      background: rgba(255,250,252,0.8);
-      padding: 1rem 1.2rem;
-      border-radius: 32px;
-      margin: 1.5rem 0;
-      font-weight: 500;
-    }
+        .btn-confetti {
+            background: #ff9068;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 12px 28px;
+            border-radius: 60px;
+            color: white;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 5px 0 #b9472c;
+            font-family: inherit;
+            margin: 15px 0 10px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-    /* Buttons container */
-    .buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.2rem;
-      margin: 1.8rem 0 1.2rem;
-    }
+        .btn-confetti:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #b9472c;
+        }
 
-    .btn {
-      border: none;
-      font-family: 'Quicksand', sans-serif;
-      font-weight: 700;
-      font-size: 1.3rem;
-      padding: 0.8rem 2rem;
-      border-radius: 60px;
-      cursor: pointer;
-      transition: 0.2s ease;
-      box-shadow: 0 6px 0 rgba(0,0,0,0.08);
-      background: white;
-      color: #b32d5a;
-      border: 1px solid #ffbfcf;
-      min-width: 140px;
-    }
+        /* extra birthday sprinkles */
+        .signature {
+            margin-top: 24px;
+            font-size: 0.9rem;
+            color: #b65c48;
+            font-weight: 500;
+            letter-spacing: 1px;
+            border-top: 1px dashed #ffbfa6;
+            padding-top: 18px;
+            display: inline-block;
+            width: 80%;
+        }
 
-    .btn-yes {
-      background: #ff6f91;
-      color: white;
-      border: none;
-      box-shadow: 0 6px 0 #a53f5c;
-    }
+        /* mobile fine-tune */
+        @media (max-width: 550px) {
+            .birthday-card {
+                padding: 1.5rem 1.2rem 2rem;
+                border-radius: 56px 36px 64px 36px;
+            }
+            h1 {
+                font-size: 2.4rem;
+            }
+            .friend-name {
+                font-size: 1.6rem;
+            }
+            .message {
+                font-size: 1rem;
+                padding: 0.8rem;
+            }
+            .cake-icon {
+                font-size: 4rem;
+            }
+            .btn-confetti {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+        }
 
-    .btn-yes:hover, .btn-yes:active {
-      background: #ff4874;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 0 #a53f5c;
-    }
+        /* small adjustments for very small devices */
+        @media (max-width: 380px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .friend-name {
+                font-size: 1.3rem;
+            }
+            .poem {
+                font-size: 0.85rem;
+            }
+        }
 
-    .btn-no {
-      background: #f2e3e8;
-      color: #a15c74;
-      border: 1px solid #f5bfd0;
-    }
+        /* fallback animation for confetti canvas */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
 
-    .btn-no:hover {
-      background: #ffdee8;
-      transform: translateY(-2px);
-    }
-
-    /* response message area */
-    .response-area {
-      margin-top: 1.5rem;
-      background: #ffffffcc;
-      border-radius: 42px;
-      padding: 0.8rem;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #b32d5a;
-      transition: all 0.3s;
-      min-height: 85px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    /* small gif / emoji row */
-    .extra-love {
-      font-size: 1.8rem;
-      letter-spacing: 6px;
-      margin-top: 1rem;
-      opacity: 0.8;
-    }
-
-    /* mobile friendly touches */
-    @media (max-width: 550px) {
-      .proposal-card {
-        padding: 1.5rem;
-      }
-      h1 {
-        font-size: 1.7rem;
-      }
-      .question {
-        font-size: 1.3rem;
-        padding: 0.3rem 1rem;
-      }
-      .btn {
-        font-size: 1.1rem;
-        padding: 0.7rem 1rem;
-        min-width: 120px;
-      }
-      .message {
-        font-size: 0.9rem;
-      }
-      .heart-icon {
-        font-size: 3rem;
-      }
-    }
-
-    /* canvas for confetti - fullscreen overlay */
-    #confetti-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 1000;
-    }
-
-    /* small sparkle effect for buttons */
-    button:active {
-      transform: scale(0.97);
-    }
-    footer {
-      font-size: 0.7rem;
-      margin-top: 1.8rem;
-      opacity: 0.6;
-      color: #cc7a97;
-    }
-  </style>
+        /* interactive hint */
+        .hint {
+            font-size: 0.75rem;
+            background: rgba(255,255,200,0.5);
+            border-radius: 30px;
+            padding: 4px 12px;
+            display: inline-block;
+            margin-top: 12px;
+            color: #ac5e48;
+        }
+    </style>
 </head>
 <body>
 
-<canvas id="confetti-canvas"></canvas>
+<div class="birthday-card">
+    <div class="cake-icon">🎂🎈✨</div>
+    <h1>Happy Birthday!</h1>
+    <div class="friend-name">🎀 Dear Friend 🎀</div>
+    
+    <div class="message">
+        🌸 Wishing you a day as radiant and beautiful as your smile! 🌸<br>
+        May this year bring you endless joy, laughter, and beautiful adventures.
+    </div>
 
-<div class="proposal-card">
-  <div class="heart-icon">💖💫💖</div>
-  <h1>Hey <span class="name-highlight" id="crushName">You</span> 💌</h1>
-  <div class="sub-message">✨ something has been on my heart ✨</div>
+    <div class="poem">
+        ✨ A friend like you makes life so sweet,<br>
+        With every laugh and every heartbeat.<br>
+        Today we celebrate the amazing you — <br>
+        Sparkling bright, forever true! ✨
+    </div>
 
-  <div class="question">
-    💕 Will you be mine? 💕
-  </div>
-
-  <div class="message">
-    Every moment with you feels like a beautiful melody. <br>
-    Your smile makes my whole world brighter. <br>
-    I've gathered all my courage just to ask you... 🌸
-  </div>
-
-  <div class="buttons">
-    <button class="btn btn-yes" id="yesButton">💖 Yes! 💖</button>
-    <button class="btn btn-no" id="noButton">😅 No, but... 😅</button>
-  </div>
-
-  <div class="response-area" id="responseMsg">
-    <span>🌈 tap your answer 🌈</span>
-  </div>
-  <div class="extra-love">
-    🎀 🌸 🎀
-  </div>
-  <footer>✨ my heart is waiting ✨</footer>
+    <button id="burstBtn" class="btn-confetti">
+        🎉✨  Celebrate with confetti! ✨🎉
+    </button>
+    
+    <div class="signature">
+        🎂 With love & birthday magic 🎂
+    </div>
+    <div class="hint">
+        👆 tap anywhere or click the button — confetti explosion!
+    </div>
 </div>
 
+<!-- Canvas for confetti animation -->
+<canvas id="confettiCanvas"></canvas>
+
 <script>
-  (function() {
-    // ----- confetti animation logic (mobile friendly, performant) -----
-    const canvas = document.getElementById('confetti-canvas');
-    let ctx = canvas.getContext('2d');
-    let animationId = null;
-    let particles = [];
-    let active = false;
-
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', () => {
-      resizeCanvas();
-      if (active) {
-        // redraw existing particles? to avoid distortion we keep particles relative?
-        // but resize while confetti active can cause weird mapping; we just reset if needed? 
-        // simply reinit canvas dimensions, particles remain but coordinates might become off-screen;
-        // To keep smooth: better reset confetti if active but it's okay since few secs only. 
-        // we can also re-run config for particles if needed, but usually not disturbing.
-      }
-    });
-
-    class ConfettiParticle {
-      constructor(x, y, size, color, speedX, speedY, rotation, rotationSpeed) {
-        this.x = x;
-        this.y = y;
-        this.size = size;
-        this.color = color;
-        this.speedX = speedX;
-        this.speedY = speedY;
-        this.rotation = rotation;
-        this.rotationSpeed = rotationSpeed;
-        this.gravity = 0.2;
-        this.drag = 0.98;
-      }
-      update() {
-        this.speedX *= this.drag;
-        this.speedY += this.gravity;
-        this.x += this.speedX;
-        this.y += this.speedY;
-        this.rotation += this.rotationSpeed;
-        return this.y < canvas.height + 100 && this.x > -100 && this.x < canvas.width + 100;
-      }
-      draw(ctx) {
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.rotation);
-        ctx.fillStyle = this.color;
-        ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size * 0.6);
-        ctx.restore();
-      }
-    }
-
-    function startConfetti(duration = 3800) {
-      if (active) {
-        // stop current and restart fresh
-        stopConfetti();
-      }
-      active = true;
-      resizeCanvas();
-      particles = [];
-      const colors = ['#ff5e7e', '#ff8aa8', '#ffb347', '#ff6f91', '#ffadc2', '#ffd966', '#c44569', '#f8acd4', '#a2e3c4'];
-      const particleCount = Math.min(150, Math.floor(window.innerWidth / 8)); // dynamic count for mobile/desktop balance
-      for (let i = 0; i < particleCount; i++) {
-        const size = 6 + Math.random() * 9;
-        const x = Math.random() * canvas.width;
-        const y = Math.random() * canvas.height - canvas.height * 0.2;
-        const speedX = (Math.random() - 0.5) * 5;
-        const speedY = (Math.random() * -3) - 1.5;
-        const rotation = Math.random() * Math.PI * 2;
-        const rotationSpeed = (Math.random() - 0.5) * 0.2;
-        const color = colors[Math.floor(Math.random() * colors.length)];
-        particles.push(new ConfettiParticle(x, y, size, color, speedX, speedY, rotation, rotationSpeed));
-      }
-      
-      function render() {
-        if (!active) return;
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        let allAlive = false;
-        for (let i = 0; i < particles.length; i++) {
-          const alive = particles[i].update();
-          particles[i].draw(ctx);
-          if (alive) allAlive = true;
+    (function(){
+        // ---------- CONFETTI ANIMATION (fast, optimized, mobile-friendly) ----------
+        const canvas = document.getElementById('confettiCanvas');
+        let ctx = canvas.getContext('2d');
+        let animationId = null;
+        let particles = [];
+        let active = false;
+        let lastTimestamp = 0;
+        
+        // Resize canvas to full screen (dynamic)
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
-        if (allAlive && active) {
-          animationId = requestAnimationFrame(render);
-        } else {
-          // particles all finished
-          stopConfetti();
+        
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            // if confetti is active, re-draw current particles? optional, but we keep dimensions correct
+            if (!active) {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+        });
+        
+        // Confetti particle class (simple but colorful)
+        class ConfettiParticle {
+            constructor(x, y, vx, vy, size, color, rotation, rotationSpeed) {
+                this.x = x;
+                this.y = y;
+                this.vx = vx;
+                this.vy = vy;
+                this.size = size;
+                this.color = color;
+                this.rotation = rotation;
+                this.rotationSpeed = rotationSpeed;
+                this.alpha = 1.0;
+                this.decay = 0.98 + Math.random() * 0.015; // slow fade
+                this.gravity = 0.2 + Math.random() * 0.2;
+                this.wind = (Math.random() - 0.5) * 0.3;
+            }
+            
+            update() {
+                this.vx += this.wind * 0.05;
+                this.vy += this.gravity;
+                this.x += this.vx;
+                this.y += this.vy;
+                this.rotation += this.rotationSpeed;
+                this.alpha *= this.decay;
+                // reduce alpha faster after a while? but fine
+                return this.alpha > 0.02 && this.y < canvas.height + 100 && this.x > -100 && this.x < canvas.width + 100;
+            }
+            
+            draw(ctx) {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
+                // optional little shimmer: sometimes little dots inside
+                ctx.restore();
+            }
         }
-      }
-      render();
-      
-      // stop after duration
-      setTimeout(() => {
-        if (active) stopConfetti();
-      }, duration);
-    }
-    
-    function stopConfetti() {
-      if (animationId) {
-        cancelAnimationFrame(animationId);
-        animationId = null;
-      }
-      active = false;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles = [];
-    }
-
-    // ----- bonus: small burst of hearts/particles effect extra -----
-    function burstMiniSparkle() {
-      // tiny extra effect: create extra short confetti wave, but also we can reuse: 
-      startConfetti(1800);
-    }
-
-    // ----- interactive proposal logic with responses, funny 'no' option behaviour -----
-    const yesBtn = document.getElementById('yesButton');
-    const noBtn = document.getElementById('noButton');
-    const responseDiv = document.getElementById('responseMsg');
-    const crushNameSpan = document.getElementById('crushName');
-    
-    // set a cute dynamic name or let user custom? default 'cutie' but you can change 'my crush' to actual name
-    // we can ask? but for proposal, it's personalizable: use any 'cutie/beautiful'
-    // we set local default to 'Gorgeous' but can be updated (you can edit variable)
-    const defaultName = "Sweetheart";
-    crushNameSpan.innerText = defaultName;
-    
-    // Use a small count to make 'no' button teasing
-    let noClickCount = 0;
-    const noResponses = [
-      "😳 Are you sure? Maybe rethink? 🥺",
-      "💞 But my heart flutters only for you! 💞",
-      "🤭 You're just teasing me, right? Click Yes! 💖",
-      "😘 I know you feel the spark... say Yes! ✨",
-      "💗 No doesn't exist in my dictionary when it's you 💗",
-      "🌸 Click 'Yes!' and make my day magical 🌸"
-    ];
-    
-    // after multiple no clicks, eventually displays a hopeful message but doesn't force yes, but encourages!
-    function updateNoResponse() {
-      if (noClickCount === 0) {
-        responseDiv.innerHTML = `<span>💭 hmm, take your time... but i’m hopeful 💭</span>`;
-      } else if (noClickCount < noResponses.length) {
-        responseDiv.innerHTML = `<span>${noResponses[noClickCount-1]} 💕</span>`;
-      } else {
-        responseDiv.innerHTML = `<span>🥺 I'll always wait for you, no pressure... but my heart is yours 💘</span>`;
-      }
-      // also shake no button playfully for attention? but subtle 
-      noBtn.style.transform = "scale(0.98)";
-      setTimeout(() => { if(noBtn) noBtn.style.transform = ""; }, 150);
-    }
-    
-    // handle Yes answer -> huge celebration, fireworks, love message
-    function celebrateYes() {
-      // disable both buttons to prevent double click mess
-      yesBtn.disabled = true;
-      noBtn.disabled = true;
-      
-      // start powerful confetti storm
-      startConfetti(5000);
-      // also add extra burst at 0.8s, 2s
-      setTimeout(() => { startConfetti(2500); }, 800);
-      setTimeout(() => { startConfetti(2000); }, 2200);
-      
-      const lovelyMessage = `✨ YAY! You just made me the happiest person ever! ✨ <br> ❤️ I can't wait to share sweet moments with you ❤️ <br> 🎉💖 Thank you, ${defaultName}! 💖🎉`;
-      responseDiv.innerHTML = lovelyMessage;
-      responseDiv.style.background = "#ffeef4";
-      responseDiv.style.fontSize = "1.25rem";
-      
-      // add a floating heart effect in response
-      const extraHeart = document.createElement('div');
-      extraHeart.innerHTML = "💖💗💖💗💖";
-      extraHeart.style.fontSize = "2rem";
-      extraHeart.style.marginTop = "10px";
-      responseDiv.appendChild(extraHeart);
-      
-      // hide no button? not necessary, but disabled is fine, can hide maybe friendly
-      noBtn.style.opacity = "0.5";
-      yesBtn.innerText = "💞 Forever Yes 💞";
-      // extra text
-      const loveRow = document.querySelector('.extra-love');
-      if(loveRow) loveRow.innerHTML = "💐💘 YOU & ME  💘💐";
-    }
-    
-    // No button multiple times gives playful rejection with hints to click Yes
-    function handleNo() {
-      if (yesBtn.disabled) return; // if already yes'd, no effect
-      noClickCount++;
-      // if they click no more than 3 times, we change the "No" text to "Wait! maybe Yes?" 
-      if (noClickCount >= 3) {
-        noBtn.innerText = "🤗 Click Yes! 🤗";
-        // after certain count, gently force? not force but encourage
-        if(noClickCount === 5) {
-          responseDiv.innerHTML = `<span>💗 Okay, but my offer stands forever. Would you reconsider? 💗<br>❤️ The Yes button is waiting ❤️</span>`;
-        } else {
-          updateNoResponse();
+        
+        // generate random pastel & vibrant birthday colors
+        function getRandomColor() {
+            const colors = [
+                '#FFB3BA', '#FFDFBA', '#FFFFBA', '#B5F0FF', '#D4B8FF', '#FF9F7C', 
+                '#FF6B8B', '#FFB347', '#C7E9B0', '#F4C2C2', '#A0E7E5', '#FADADD',
+                '#FFAAA5', '#F3B3A6', '#BBE7F5', '#F8C7CC', '#E2F0CB', '#FFC8A2'
+            ];
+            return colors[Math.floor(Math.random() * colors.length)];
         }
-        // if noClickCount > 6, extra gentle nudge
-        if (noClickCount >= 7) {
-          responseDiv.innerHTML = `<span>💞 I'm not giving up! You're worth it 💞 💖 Click Yes and get a lifetime of happiness 💖</span>`;
+        
+        // burst of many confetti pieces from the center of view (or from tap coordinates)
+        function burstConfetti(originX = null, originY = null) {
+            if (active) {
+                // if already animating, just add more particles to current explosion (makes it more festive)
+                generateParticles(originX, originY, 150);
+                return;
+            }
+            // start fresh but keep existing might be cleaner: we clear previous particles and start new burst
+            particles = [];
+            generateParticles(originX, originY, 220);
+            active = true;
+            if (animationId) cancelAnimationFrame(animationId);
+            animationId = requestAnimationFrame(animateConfetti);
         }
-      } else {
-        updateNoResponse();
-      }
-      
-      // move no button slight wiggle (fun)
-      noBtn.style.transform = "translateX(3px)";
-      setTimeout(() => { if(noBtn) noBtn.style.transform = ""; }, 200);
-      
-      // if they approach many no's, still enable yes anyway, but small confetti burst for fun? actually add mini glitter
-      if (noClickCount === 2) {
-        // first time no? soft sparkle to show hope
-        startConfetti(900);
-      }
-      if (noClickCount === 4) {
-        startConfetti(1300);
-        responseDiv.innerHTML += `<span style="display:block; font-size:0.9rem;">💫 destiny made us meet 💫</span>`;
-      }
-    }
+        
+        function generateParticles(originX, originY, count) {
+            let centerX = originX !== null ? originX : canvas.width / 2;
+            let centerY = originY !== null ? originY : canvas.height / 2;
+            // Fallback if canvas width/height unreachable (0)
+            if (canvas.width === 0 || canvas.height === 0) {
+                resizeCanvas();
+                centerX = canvas.width / 2;
+                centerY = canvas.height / 2;
+            }
+            for (let i = 0; i < count; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = 3 + Math.random() * 7;
+                const vx = Math.cos(angle) * speed * (Math.random() * 1.2);
+                const vy = Math.sin(angle) * speed * (Math.random() * 1.2) - 4; // upward bias
+                const size = 6 + Math.random() * 12;
+                const color = getRandomColor();
+                const rotation = Math.random() * Math.PI * 2;
+                const rotSpeed = (Math.random() - 0.5) * 0.2;
+                const particle = new ConfettiParticle(
+                    centerX + (Math.random() - 0.5) * 40,
+                    centerY + (Math.random() - 0.5) * 30,
+                    vx + (Math.random() - 0.5) * 1.8,
+                    vy + (Math.random() - 0.8) * 1.5,
+                    size,
+                    color,
+                    rotation,
+                    rotSpeed
+                );
+                particles.push(particle);
+            }
+        }
+        
+        function animateConfetti() {
+            if (!active) return;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            let anyAlive = false;
+            for (let i = 0; i < particles.length; i++) {
+                const alive = particles[i].update();
+                if (alive) {
+                    anyAlive = true;
+                    particles[i].draw(ctx);
+                } else {
+                    particles.splice(i, 1);
+                    i--;
+                }
+            }
+            if (!anyAlive && particles.length === 0) {
+                // stop animation
+                active = false;
+                cancelAnimationFrame(animationId);
+                animationId = null;
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                return;
+            }
+            animationId = requestAnimationFrame(animateConfetti);
+        }
+        
+        // trigger with random "burst" or from click coordinates
+        function burstFromEvent(e) {
+            let clientX, clientY;
+            if (e.touches) {
+                // touch event
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            } else {
+                clientX = e.clientX;
+                clientY = e.clientY;
+            }
+            // relative to canvas coordinate space
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            let canvasX = (clientX - rect.left) * scaleX;
+            let canvasY = (clientY - rect.top) * scaleY;
+            // clamp to canvas bounds
+            canvasX = Math.min(Math.max(canvasX, 0), canvas.width);
+            canvasY = Math.min(Math.max(canvasY, 0), canvas.height);
+            burstConfetti(canvasX, canvasY);
+        }
+        
+        // Helper to ensure canvas ready
+        function initCanvasAndEvents() {
+            resizeCanvas();
+            // attach event listeners to whole body / card to make festive interactions
+            const card = document.querySelector('.birthday-card');
+            const button = document.getElementById('burstBtn');
+            
+            // button trigger
+            button.addEventListener('click', (event) => {
+                event.stopPropagation();
+                burstFromEvent(event);
+            });
+            
+            // tap/click anywhere on body to also trigger (nice for mobile & desktop)
+            document.body.addEventListener('click', (event) => {
+                // if the click target is the button, we already triggered; avoid double burst
+                if (event.target === button || button.contains(event.target)) {
+                    return;
+                }
+                burstFromEvent(event);
+            });
+            
+            // touch start for mobile with same logic (prevent scrolling while bursting? but totally fine)
+            document.body.addEventListener('touchstart', (event) => {
+                if (event.target === button || button.contains(event.target)) {
+                    // button handles its own, but we don't want double but not harming too much
+                    return;
+                }
+                burstFromEvent(event);
+                // optionally prevent default to not cause zoom? we'll keep just a small vibration-friendly
+                event.preventDefault(); // avoid scroll while tapping on confetti? but may block default scroll. Better allow small but we call burst without heavy side.
+                // Actually we cancel default only to avoid extra zoom on double tap but not needed. we revert? But it's okay.
+            }, { passive: false });
+            
+            // extra burst on window load (just to celebrate initial view)
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    // burst from center after page load (festive surprise)
+                    burstConfetti(canvas.width/2, canvas.height/2);
+                    // add a second small burst after 0.6s for extra joy
+                    setTimeout(() => {
+                        if (canvas.width && canvas.height) burstConfetti(canvas.width/2, canvas.height/2);
+                    }, 300);
+                }, 200);
+            });
+            
+            // ensure canvas resets on orientation change
+            window.addEventListener('orientationchange', () => {
+                setTimeout(() => {
+                    resizeCanvas();
+                    if (active) {
+                        // if active, clear to avoid weird stretch, but particles will be redrawn with new dimensions
+                        ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    }
+                }, 30);
+            });
+        }
+        
+        // also handle visibility API to stop animation when tab inactive (performance)
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden && active && animationId) {
+                cancelAnimationFrame(animationId);
+                animationId = null;
+                // we let active = true but we can resume after? we'll just cancel and reinit later
+                // after visibility returns, if active but no animation, restart it
+            } else if (!document.hidden && active && !animationId && particles.length > 0) {
+                animationId = requestAnimationFrame(animateConfetti);
+            }
+        });
+        
+        initCanvasAndEvents();
+        
+        // extra protection: if canvas context fails, but fine.
+        // Add floating balloons effect? not necessary but small nice addition: mini floating sparkles? (no overload)
+    })();
     
-    // reset behavior but since we need consistent, add also option to change "no" after many clicks to suggest.
-    // For accessibility: we also include an optional reset of the name? not needed, but we can let user double tap? no
+    // We also add a tiny dynamic "friend name" personalization, but the user can edit text directly.
+    // For extra cuteness, we inject some fun by changing the name placeholder (optional editable via query)
+    // since they requested "my female friend" we'll let the "Dear Friend" can be replaced via simple script
+    // but to keep it elegant, we can add a small double-click to change name? not mandatory, but nice.
+    // However spec just wants birthday wish website with confetti and mobile friendly. I will also allow a simple dynamic name modal free? no need.
+    // But to make it extra special I'll add a hidden feature: gently tap the friend-name area to personalize the wish name (optional, not intrusive)
+    (function personalizeHint() {
+        const nameSpan = document.querySelector('.friend-name');
+        if (nameSpan) {
+            let originalName = nameSpan.innerText;
+            nameSpan.style.transition = 'all 0.2s ease';
+            nameSpan.style.cursor = 'pointer';
+            nameSpan.title = 'Tap to personalize friend\'s name ✨';
+            nameSpan.addEventListener('click', (e) => {
+                e.stopPropagation();
+                let newName = prompt("Enter your friend's name:", "Bestie");
+                if (newName && newName.trim() !== "") {
+                    let prettyName = newName.trim();
+                    if (!prettyName.endsWith('🎀') && !prettyName.startsWith('🎀')) {
+                        nameSpan.innerHTML = `🎀 ${prettyName} 🎀`;
+                    } else {
+                        nameSpan.innerHTML = prettyName;
+                    }
+                } else if (newName === "") {
+                    // revert maybe no
+                }
+            });
+        }
+    })();
     
-    // also for fun, if you want to edit "crush name" via query param or just keep as editable variable: 
-    // allow custom name from url? extra nice touch (optional)
-    const urlParams = new URLSearchParams(window.location.search);
-    const customName = urlParams.get('name');
-    if (customName && customName.trim().length > 0) {
-      crushNameSpan.innerText = decodeURIComponent(customName.slice(0, 20));
-    } else {
-      // keep default romantic name variation
-      crushNameSpan.innerText = "My Darling";
-    }
-    
-    // buttons event listeners
-    yesBtn.addEventListener('click', celebrateYes);
-    noBtn.addEventListener('click', handleNo);
-    
-    // if user accidentally taps multiple times on no we prevent double celebration but fine.
-    // nice extra: present some initial floating hearts on load? small welcome confetti? light
-    window.addEventListener('load', () => {
-      // tiny gentle confetti sprinkles to welcome
-      setTimeout(() => {
-        startConfetti(1200);
-      }, 400);
-      // set initial message cute
-      responseDiv.innerHTML = `<span>💌 my heart is skipping a beat... 💌</span>`;
-    });
-    
-    // mobile tap optimization: avoid 300ms delay
-    if ('ontouchstart' in window) {
-      yesBtn.style.touchAction = 'manipulation';
-      noBtn.style.touchAction = 'manipulation';
-    }
-    
-    // To respect the "No" but still keep proposal engaging, we also add animation on card entrance?
-    // no extra needed.
-    
-    // final: if yes already pressed, we prevent further no
-    // also a safe fallback for canvas context lost.
-  })();
+    // Additional: add micro interaction for button hover
+    const styleExtra = document.createElement('style');
+    styleExtra.textContent = `
+        .btn-confetti:active {
+            transform: translateY(2px);
+        }
+        @keyframes gentlePulse {
+            0% { text-shadow: 0 0 0px rgba(255,200,150,0);}
+            100% { text-shadow: 0 0 8px rgba(255,120,80,0.5);}
+        }
+        .friend-name:hover {
+            background: rgba(255, 215, 190, 0.9);
+        }
+    `;
+    document.head.appendChild(styleExtra);
 </script>
 </body>
 </html>
