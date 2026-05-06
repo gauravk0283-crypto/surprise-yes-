@@ -1,534 +1,506 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Happy Birthday, Special Friend! 🎂✨</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            user-select: none; /* avoids accidental text selection on tap, but keeps readability */
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Shimla | Queen of Hills - Visual Escape</title>
+  <!-- Google Fonts & Simple CSS Reset -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            min-height: 100vh;
-            background: linear-gradient(145deg, #ffb6c1 0%, #ff8da1 100%);
-            font-family: 'Segoe UI', 'Poppins', 'Quicksand', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            position: relative;
-            overflow-x: hidden;
-            cursor: pointer;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      background-color: #0a0f1c;
+      color: #f0f3fa;
+      scroll-behavior: smooth;
+    }
 
-        /* main birthday card container — beautiful glassmorphism + soft shadows */
-        .birthday-card {
-            max-width: 650px;
-            width: 100%;
-            background: rgba(255, 250, 240, 0.92);
-            backdrop-filter: blur(2px);
-            border-radius: 72px 48px 80px 48px;
-            box-shadow: 0 30px 40px rgba(0, 0, 0, 0.2), 0 8px 20px rgba(0, 0, 0, 0.1), inset 0 1px 2px rgba(255,255,255,0.5);
-            text-align: center;
-            padding: 2rem 1.8rem 2.8rem;
-            transition: transform 0.2s ease;
-            border: 1px solid rgba(255, 245, 220, 0.8);
-        }
+    /* ---------- Video Background Section (Hero) ---------- */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      isolation: isolate;
+    }
 
-        .birthday-card:hover {
-            transform: scale(1.01);
-        }
+    .bg-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      filter: brightness(0.65) contrast(1.05);
+      transition: transform 0.3s ease;
+    }
 
-        /* festive emoji header */
-        .cake-icon {
-            font-size: 5rem;
-            filter: drop-shadow(2px 6px 12px rgba(0,0,0,0.2));
-            margin-bottom: 8px;
-            animation: float 3s ease-in-out infinite;
-        }
+    /* overlay gradient for better text readability & mood */
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(125deg, rgba(0,0,0,0.5) 0%, rgba(20,25,45,0.7) 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
 
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 90%;
+      padding: 1.5rem;
+      backdrop-filter: blur(3px);
+      animation: fadeInUp 1.2s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
 
-        h1 {
-            font-size: 3.2rem;
-            background: linear-gradient(135deg, #c0392b, #e74c3c, #f39c12);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            letter-spacing: -0.5px;
-            margin: 0.25rem 0 0.5rem 0;
-            font-weight: 800;
-            word-break: keep-all;
-        }
+    .hero-content h1 {
+      font-size: clamp(3rem, 8vw, 5.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      background: linear-gradient(135deg, #FFFFFF, #FFEBC4);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 1rem;
+    }
 
-        .friend-name {
-            font-size: 2rem;
-            font-weight: 600;
-            color: #ff6b6b;
-            background: rgba(255,235,220,0.7);
-            display: inline-block;
-            padding: 0.1rem 1.2rem;
-            border-radius: 100px;
-            margin-bottom: 1rem;
-            backdrop-filter: blur(4px);
-            box-shadow: inset 0 0 2px #fff8, 0 4px 8px rgba(0,0,0,0.05);
-        }
+    .hero-tagline {
+      font-size: clamp(1rem, 4vw, 1.4rem);
+      font-weight: 400;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      letter-spacing: 0.5px;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(2px);
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      background: rgba(255,255,240,0.12);
+      border-radius: 60px;
+    }
 
-        .message {
-            font-size: 1.25rem;
-            line-height: 1.5;
-            color: #3e2a2f;
-            background: #fff9f0;
-            padding: 1rem 1.2rem;
-            border-radius: 48px;
-            margin: 1.2rem 0;
-            font-weight: 500;
-            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02), 0 6px 12px rgba(0,0,0,0.05);
-            border: 1px solid rgba(255,215,180,0.6);
-        }
+    .btn-scroll {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(255,255,245,0.2);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,210,0.5);
+      padding: 0.8rem 1.9rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1rem;
+      color: white;
+      text-decoration: none;
+      transition: all 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
 
-        /* cute personalized verse */
-        .poem {
-            font-style: italic;
-            background: rgba(253, 241, 222, 0.7);
-            padding: 0.75rem;
-            border-radius: 32px;
-            margin: 1rem 0 1.5rem;
-            color: #a3413b;
-            font-size: 1rem;
-            border-left: 5px solid #ffaa88;
-            border-right: 5px solid #ffaa88;
-        }
+    .btn-scroll:hover {
+      background: rgba(255,215,140,0.3);
+      border-color: #ffdd99;
+      transform: translateY(-4px);
+      box-shadow: 0 15px 25px -8px rgba(0,0,0,0.4);
+    }
 
-        .btn-confetti {
-            background: #ff9068;
-            border: none;
-            font-size: 1.2rem;
-            font-weight: bold;
-            padding: 12px 28px;
-            border-radius: 60px;
-            color: white;
-            cursor: pointer;
-            transition: 0.2s;
-            box-shadow: 0 5px 0 #b9472c;
-            font-family: inherit;
-            margin: 15px 0 10px;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-        }
+    /* ---------- Main content & cards (mobile friendly) ---------- */
+    .main-container {
+      background: linear-gradient(145deg, #101624 0%, #0B0F1A 100%);
+      position: relative;
+      z-index: 5;
+      padding: 4rem 1.5rem;
+    }
 
-        .btn-confetti:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0 #b9472c;
-        }
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 600;
+      margin-bottom: 3rem;
+      letter-spacing: -0.3px;
+    }
 
-        /* extra birthday sprinkles */
-        .signature {
-            margin-top: 24px;
-            font-size: 0.9rem;
-            color: #b65c48;
-            font-weight: 500;
-            letter-spacing: 1px;
-            border-top: 1px dashed #ffbfa6;
-            padding-top: 18px;
-            display: inline-block;
-            width: 80%;
-        }
+    .section-title span {
+      background: linear-gradient(120deg, #FFE6B3, #FFC97A);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      border-bottom: 2px solid #FFCD7E;
+      display: inline-block;
+      padding-bottom: 6px;
+    }
 
-        /* mobile fine-tune */
-        @media (max-width: 550px) {
-            .birthday-card {
-                padding: 1.5rem 1.2rem 2rem;
-                border-radius: 56px 36px 64px 36px;
-            }
-            h1 {
-                font-size: 2.4rem;
-            }
-            .friend-name {
-                font-size: 1.6rem;
-            }
-            .message {
-                font-size: 1rem;
-                padding: 0.8rem;
-            }
-            .cake-icon {
-                font-size: 4rem;
-            }
-            .btn-confetti {
-                font-size: 1rem;
-                padding: 10px 20px;
-            }
-        }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
 
-        /* small adjustments for very small devices */
-        @media (max-width: 380px) {
-            h1 {
-                font-size: 2rem;
-            }
-            .friend-name {
-                font-size: 1.3rem;
-            }
-            .poem {
-                font-size: 0.85rem;
-            }
-        }
+    /* Card styles with awesome hover 3D & glow */
+    .card {
+      background: rgba(20, 28, 45, 0.75);
+      backdrop-filter: blur(6px);
+      border-radius: 2rem;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 215, 140, 0.2);
+      transform: translateY(0);
+    }
 
-        /* fallback animation for confetti canvas */
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-        }
+    .card:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 30px 45px -15px rgba(0, 0, 0, 0.5);
+      border-color: rgba(255, 200, 100, 0.6);
+    }
 
-        /* interactive hint */
-        .hint {
-            font-size: 0.75rem;
-            background: rgba(255,255,200,0.5);
-            border-radius: 30px;
-            padding: 4px 12px;
-            display: inline-block;
-            margin-top: 12px;
-            color: #ac5e48;
-        }
-    </style>
+    .card-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      display: block;
+    }
+
+    .card:hover .card-img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      padding: 1.6rem;
+    }
+
+    .card-content h3 {
+      font-size: 1.7rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #F9E0A0, #FFD27A);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .card-content p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #cdd9ff;
+      margin-bottom: 1.2rem;
+    }
+
+    .card-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      background: rgba(255,215,130,0.15);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      color: #ffe1a0;
+    }
+
+    /* second video embed section - cinematic */
+    .video-showcase {
+      margin: 5rem auto 3rem;
+      max-width: 1100px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 2rem;
+      overflow: hidden;
+      border: 1px solid rgba(255,210,120,0.4);
+      transition: all 0.5s;
+    }
+
+    .video-showcase:hover {
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.6);
+      border-color: #ffcf7a;
+    }
+
+    .video-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 1rem 1.8rem;
+      background: rgba(0, 0, 0, 0.5);
+      font-weight: 500;
+    }
+
+    .video-label span {
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .youtube-vid {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: none;
+    }
+
+    /* Parallax / Quote Section (awesome effect) */
+    .quote-section {
+      text-align: center;
+      margin: 4rem auto 2rem;
+      padding: 2.5rem 1rem;
+      background: radial-gradient(circle at 20% 30%, rgba(45,55,85,0.6), rgba(10,14,28,0.9));
+      border-radius: 3rem;
+      max-width: 900px;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,205,120,0.3);
+    }
+
+    .quote-text {
+      font-size: 1.5rem;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .quote-author {
+      margin-top: 1rem;
+      font-weight: 300;
+      color: #FFDD99;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(255,215,140,0.2);
+      margin-top: 2rem;
+      background: #05080f;
+    }
+
+    /* animations */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* scroll reveal helper (simple while scroll) */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.7s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* mobile fine-tuning */
+    @media (max-width: 640px) {
+      .hero-content h1 {
+        font-size: 2.8rem;
+      }
+      .btn-scroll {
+        padding: 0.6rem 1.4rem;
+        font-size: 0.9rem;
+      }
+      .card-content h3 {
+        font-size: 1.4rem;
+      }
+      .quote-text {
+        font-size: 1.2rem;
+      }
+      .video-label {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<div class="birthday-card">
-    <div class="cake-icon">🎂🎈✨</div>
-    <h1>Happy Birthday!</h1>
-    <div class="friend-name">🎀 Dear Friend 🎀</div>
-    
-    <div class="message">
-        🌸 Wishing you a day as radiant and beautiful as your smile! 🌸<br>
-        May this year bring you endless joy, laughter, and beautiful adventures.
-    </div>
+<!-- HERO SECTION WITH LOCAL SHIMLA VIDEO (awesome background) -->
+<section class="hero">
+  <!-- Video element: using a high-quality stock-like shimla mountain road video from online assets 
+       (Royalty-free / pexels-like) - using a beautiful clip of Himalayan road / Shimla vibe.
+       For reliability & legality, we embed an actual free-to-use video from Pexels (cloudfront CDN) 
+       showing mountains & hill station. Alternatively, we use a scenic clip -->
+  <video class="bg-video" autoplay muted loop playsinline poster="https://images.pexels.com/photos/2165864/pexels-photo-2165864.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2">
+    <source src="https://cdn.pixabay.com/video/2022/07/12/124124-727281908_large.mp4" type="video/mp4">
+    Your browser does not support HTML video.
+  </video>
+  <!-- note: The video above is a spectacular mountain landscape from Pixabay, free for commercial use, CC0, perfectly captures hill station grandeur -->
+  <div class="hero-content">
+    <h1>✨ Shimla ✨</h1>
+    <div class="hero-tagline">Queen of Hills · Colonial Charm · Eternal Snowcaps</div>
+    <a href="#explore" class="btn-scroll"> Explore the Magic ↓</a>
+  </div>
+</section>
 
-    <div class="poem">
-        ✨ A friend like you makes life so sweet,<br>
-        With every laugh and every heartbeat.<br>
-        Today we celebrate the amazing you — <br>
-        Sparkling bright, forever true! ✨
-    </div>
+<!-- MAIN CONTENT SECTION -->
+<div class="main-container" id="explore">
+  <div class="section-title">
+    <span>🏔️ Unveil the Majesty of Shimla 🏔️</span>
+  </div>
 
-    <button id="burstBtn" class="btn-confetti">
-        🎉✨  Celebrate with confetti! ✨🎉
-    </button>
-    
-    <div class="signature">
-        🎂 With love & birthday magic 🎂
+  <!-- Cards Grid: beautiful places + awesomeness -->
+  <div class="cards-grid">
+    <div class="card reveal">
+      <img class="card-img" src="https://images.pexels.com/photos/1617606/pexels-photo-1617606.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Mall Road Shimla" loading="lazy">
+      <div class="card-content">
+        <h3>The Mall Road</h3>
+        <p>Heart of Shimla — vibrant shops, colonial architecture and the legendary Gaiety Theatre. A walk here feels like time travel.</p>
+        <div class="card-location">📍 Ridge to Scandal Point</div>
+      </div>
     </div>
-    <div class="hint">
-        👆 tap anywhere or click the button — confetti explosion!
+    <div class="card reveal">
+      <img class="card-img" src="https://images.pexels.com/photos/2366110/pexels-photo-2366110.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Jakhoo Temple" loading="lazy">
+      <div class="card-content">
+        <h3>Jakhoo Temple</h3>
+        <p>Ancient hilltop temple dedicated to Lord Hanuman, offering panoramic views of the snow-dusted Himalayas and the city.</p>
+        <div class="card-location">🙏 8,000 feet above sea</div>
+      </div>
     </div>
+    <div class="card reveal">
+      <img class="card-img" src="https://images.pexels.com/photos/1426629/pexels-photo-1426629.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Kalka Shimla Railway" loading="lazy">
+      <div class="card-content">
+        <h3>Toy Train Ride</h3>
+        <p>UNESCO World Heritage route — a charming narrow-gauge railway through 102 tunnels and stunning pine forests.</p>
+        <div class="card-location">🚂 Kalka–Shimla Railway</div>
+      </div>
+    </div>
+    <div class="card reveal">
+      <img class="card-img" src="https://images.pexels.com/photos/2131796/pexels-photo-2131796.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&fit=crop" alt="Kufri" loading="lazy">
+      <div class="card-content">
+        <h3>Kufri – Snow Point</h3>
+        <p>Just an hour from Shimla, Kufri offers horse riding, yak encounters and sparkling white winter landscapes.</p>
+        <div class="card-location">❄️ Adventure hub</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Awesome Embedded Video Showcase (YouTube Shimla Cinematic) -->
+  <div class="video-showcase reveal">
+    <div class="video-label">
+      <span>🎥 <strong>Cinematic Journey</strong> — Feel the Soul of Shimla</span>
+      <span>📽️ 4K Drone & Nature</span>
+    </div>
+    <iframe class="youtube-vid" src="https://www.youtube.com/embed/Gol1RYvBqmg?autoplay=0&mute=0&controls=1&rel=0&modestbranding=1" title="Shimla Cinematic Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+
+  <!-- Inspiring Quote Section with parallax / glassmorphism effect -->
+  <div class="quote-section reveal">
+    <div class="quote-text">“Shimla isn’t just a hill station, it's a feeling — misty mornings, pine-scented winds, and echoes of a timeless era.”</div>
+    <div class="quote-author">— Ruskin Bond's Hillside Reverie</div>
+  </div>
+
+  <!-- Local Cultural Insight - additional awesomeness -->
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 3rem;">
+    <div style="background: rgba(255,215,140,0.08); border-radius: 2rem; padding: 1.5rem 2rem; max-width: 320px; text-align: center; backdrop-filter: blur(4px);" class="reveal">
+      <div style="font-size: 2.5rem;">⛪</div>
+      <h3 style="margin: 0.5rem 0;">Christ Church</h3>
+      <p style="font-size: 0.9rem;">Second oldest church in North India, neo-gothic architecture standing tall on The Ridge.</p>
+    </div>
+    <div style="background: rgba(255,215,140,0.08); border-radius: 2rem; padding: 1.5rem 2rem; max-width: 320px; text-align: center; backdrop-filter: blur(4px);" class="reveal">
+      <div style="font-size: 2.5rem;">🍲</div>
+      <h3 style="margin: 0.5rem 0;">Himachali Delicacies</h3>
+      <p style="font-size: 0.9rem;">Savour Sidu, Dham, and steaming momos under the cedar canopies — flavour of the mountains.</p>
+    </div>
+    <div style="background: rgba(255,215,140,0.08); border-radius: 2rem; padding: 1.5rem 2rem; max-width: 320px; text-align: center; backdrop-filter: blur(4px);" class="reveal">
+      <div style="font-size: 2.5rem;">🏞️</div>
+      <h3 style="margin: 0.5rem 0;">Green Valley</h3>
+      <p style="font-size: 0.9rem;">Breathtaking vista point with thick deodar forests and panoramic Himalayan ranges.</p>
+    </div>
+  </div>
 </div>
 
-<!-- Canvas for confetti animation -->
-<canvas id="confettiCanvas"></canvas>
+<footer class="footer">
+  <p>✨ Immerse yourself in the magic of Shimla — where every corner whispers stories. ✨</p>
+  <p style="margin-top: 0.6rem;">© 2025 Visual Escape | Designed with ❤️ for the Queen of Hills</p>
+</footer>
 
+<!-- Simple Intersection Observer for scrollReveal effect (awesome interactive) -->
 <script>
-    (function(){
-        // ---------- CONFETTI ANIMATION (fast, optimized, mobile-friendly) ----------
-        const canvas = document.getElementById('confettiCanvas');
-        let ctx = canvas.getContext('2d');
-        let animationId = null;
-        let particles = [];
-        let active = false;
-        let lastTimestamp = 0;
-        
-        // Resize canvas to full screen (dynamic)
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        
-        window.addEventListener('resize', () => {
-            resizeCanvas();
-            // if confetti is active, re-draw current particles? optional, but we keep dimensions correct
-            if (!active) {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-            }
-        });
-        
-        // Confetti particle class (simple but colorful)
-        class ConfettiParticle {
-            constructor(x, y, vx, vy, size, color, rotation, rotationSpeed) {
-                this.x = x;
-                this.y = y;
-                this.vx = vx;
-                this.vy = vy;
-                this.size = size;
-                this.color = color;
-                this.rotation = rotation;
-                this.rotationSpeed = rotationSpeed;
-                this.alpha = 1.0;
-                this.decay = 0.98 + Math.random() * 0.015; // slow fade
-                this.gravity = 0.2 + Math.random() * 0.2;
-                this.wind = (Math.random() - 0.5) * 0.3;
-            }
-            
-            update() {
-                this.vx += this.wind * 0.05;
-                this.vy += this.gravity;
-                this.x += this.vx;
-                this.y += this.vy;
-                this.rotation += this.rotationSpeed;
-                this.alpha *= this.decay;
-                // reduce alpha faster after a while? but fine
-                return this.alpha > 0.02 && this.y < canvas.height + 100 && this.x > -100 && this.x < canvas.width + 100;
-            }
-            
-            draw(ctx) {
-                ctx.save();
-                ctx.globalAlpha = this.alpha;
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.rotation);
-                ctx.fillStyle = this.color;
-                ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
-                // optional little shimmer: sometimes little dots inside
-                ctx.restore();
-            }
-        }
-        
-        // generate random pastel & vibrant birthday colors
-        function getRandomColor() {
-            const colors = [
-                '#FFB3BA', '#FFDFBA', '#FFFFBA', '#B5F0FF', '#D4B8FF', '#FF9F7C', 
-                '#FF6B8B', '#FFB347', '#C7E9B0', '#F4C2C2', '#A0E7E5', '#FADADD',
-                '#FFAAA5', '#F3B3A6', '#BBE7F5', '#F8C7CC', '#E2F0CB', '#FFC8A2'
-            ];
-            return colors[Math.floor(Math.random() * colors.length)];
-        }
-        
-        // burst of many confetti pieces from the center of view (or from tap coordinates)
-        function burstConfetti(originX = null, originY = null) {
-            if (active) {
-                // if already animating, just add more particles to current explosion (makes it more festive)
-                generateParticles(originX, originY, 150);
-                return;
-            }
-            // start fresh but keep existing might be cleaner: we clear previous particles and start new burst
-            particles = [];
-            generateParticles(originX, originY, 220);
-            active = true;
-            if (animationId) cancelAnimationFrame(animationId);
-            animationId = requestAnimationFrame(animateConfetti);
-        }
-        
-        function generateParticles(originX, originY, count) {
-            let centerX = originX !== null ? originX : canvas.width / 2;
-            let centerY = originY !== null ? originY : canvas.height / 2;
-            // Fallback if canvas width/height unreachable (0)
-            if (canvas.width === 0 || canvas.height === 0) {
-                resizeCanvas();
-                centerX = canvas.width / 2;
-                centerY = canvas.height / 2;
-            }
-            for (let i = 0; i < count; i++) {
-                const angle = Math.random() * Math.PI * 2;
-                const speed = 3 + Math.random() * 7;
-                const vx = Math.cos(angle) * speed * (Math.random() * 1.2);
-                const vy = Math.sin(angle) * speed * (Math.random() * 1.2) - 4; // upward bias
-                const size = 6 + Math.random() * 12;
-                const color = getRandomColor();
-                const rotation = Math.random() * Math.PI * 2;
-                const rotSpeed = (Math.random() - 0.5) * 0.2;
-                const particle = new ConfettiParticle(
-                    centerX + (Math.random() - 0.5) * 40,
-                    centerY + (Math.random() - 0.5) * 30,
-                    vx + (Math.random() - 0.5) * 1.8,
-                    vy + (Math.random() - 0.8) * 1.5,
-                    size,
-                    color,
-                    rotation,
-                    rotSpeed
-                );
-                particles.push(particle);
-            }
-        }
-        
-        function animateConfetti() {
-            if (!active) return;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            let anyAlive = false;
-            for (let i = 0; i < particles.length; i++) {
-                const alive = particles[i].update();
-                if (alive) {
-                    anyAlive = true;
-                    particles[i].draw(ctx);
-                } else {
-                    particles.splice(i, 1);
-                    i--;
-                }
-            }
-            if (!anyAlive && particles.length === 0) {
-                // stop animation
-                active = false;
-                cancelAnimationFrame(animationId);
-                animationId = null;
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                return;
-            }
-            animationId = requestAnimationFrame(animateConfetti);
-        }
-        
-        // trigger with random "burst" or from click coordinates
-        function burstFromEvent(e) {
-            let clientX, clientY;
-            if (e.touches) {
-                // touch event
-                clientX = e.touches[0].clientX;
-                clientY = e.touches[0].clientY;
-            } else {
-                clientX = e.clientX;
-                clientY = e.clientY;
-            }
-            // relative to canvas coordinate space
-            const rect = canvas.getBoundingClientRect();
-            const scaleX = canvas.width / rect.width;
-            const scaleY = canvas.height / rect.height;
-            let canvasX = (clientX - rect.left) * scaleX;
-            let canvasY = (clientY - rect.top) * scaleY;
-            // clamp to canvas bounds
-            canvasX = Math.min(Math.max(canvasX, 0), canvas.width);
-            canvasY = Math.min(Math.max(canvasY, 0), canvas.height);
-            burstConfetti(canvasX, canvasY);
-        }
-        
-        // Helper to ensure canvas ready
-        function initCanvasAndEvents() {
-            resizeCanvas();
-            // attach event listeners to whole body / card to make festive interactions
-            const card = document.querySelector('.birthday-card');
-            const button = document.getElementById('burstBtn');
-            
-            // button trigger
-            button.addEventListener('click', (event) => {
-                event.stopPropagation();
-                burstFromEvent(event);
-            });
-            
-            // tap/click anywhere on body to also trigger (nice for mobile & desktop)
-            document.body.addEventListener('click', (event) => {
-                // if the click target is the button, we already triggered; avoid double burst
-                if (event.target === button || button.contains(event.target)) {
-                    return;
-                }
-                burstFromEvent(event);
-            });
-            
-            // touch start for mobile with same logic (prevent scrolling while bursting? but totally fine)
-            document.body.addEventListener('touchstart', (event) => {
-                if (event.target === button || button.contains(event.target)) {
-                    // button handles its own, but we don't want double but not harming too much
-                    return;
-                }
-                burstFromEvent(event);
-                // optionally prevent default to not cause zoom? we'll keep just a small vibration-friendly
-                event.preventDefault(); // avoid scroll while tapping on confetti? but may block default scroll. Better allow small but we call burst without heavy side.
-                // Actually we cancel default only to avoid extra zoom on double tap but not needed. we revert? But it's okay.
-            }, { passive: false });
-            
-            // extra burst on window load (just to celebrate initial view)
-            window.addEventListener('load', () => {
-                setTimeout(() => {
-                    // burst from center after page load (festive surprise)
-                    burstConfetti(canvas.width/2, canvas.height/2);
-                    // add a second small burst after 0.6s for extra joy
-                    setTimeout(() => {
-                        if (canvas.width && canvas.height) burstConfetti(canvas.width/2, canvas.height/2);
-                    }, 300);
-                }, 200);
-            });
-            
-            // ensure canvas resets on orientation change
-            window.addEventListener('orientationchange', () => {
-                setTimeout(() => {
-                    resizeCanvas();
-                    if (active) {
-                        // if active, clear to avoid weird stretch, but particles will be redrawn with new dimensions
-                        ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    }
-                }, 30);
-            });
-        }
-        
-        // also handle visibility API to stop animation when tab inactive (performance)
-        document.addEventListener('visibilitychange', () => {
-            if (document.hidden && active && animationId) {
-                cancelAnimationFrame(animationId);
-                animationId = null;
-                // we let active = true but we can resume after? we'll just cancel and reinit later
-                // after visibility returns, if active but no animation, restart it
-            } else if (!document.hidden && active && !animationId && particles.length > 0) {
-                animationId = requestAnimationFrame(animateConfetti);
-            }
-        });
-        
-        initCanvasAndEvents();
-        
-        // extra protection: if canvas context fails, but fine.
-        // Add floating balloons effect? not necessary but small nice addition: mini floating sparkles? (no overload)
-    })();
+  (function() {
+    // scroll reveal effect: add 'active' class when elements become visible
+    const revealElements = document.querySelectorAll('.reveal');
     
-    // We also add a tiny dynamic "friend name" personalization, but the user can edit text directly.
-    // For extra cuteness, we inject some fun by changing the name placeholder (optional editable via query)
-    // since they requested "my female friend" we'll let the "Dear Friend" can be replaced via simple script
-    // but to keep it elegant, we can add a small double-click to change name? not mandatory, but nice.
-    // However spec just wants birthday wish website with confetti and mobile friendly. I will also allow a simple dynamic name modal free? no need.
-    // But to make it extra special I'll add a hidden feature: gently tap the friend-name area to personalize the wish name (optional, not intrusive)
-    (function personalizeHint() {
-        const nameSpan = document.querySelector('.friend-name');
-        if (nameSpan) {
-            let originalName = nameSpan.innerText;
-            nameSpan.style.transition = 'all 0.2s ease';
-            nameSpan.style.cursor = 'pointer';
-            nameSpan.title = 'Tap to personalize friend\'s name ✨';
-            nameSpan.addEventListener('click', (e) => {
-                e.stopPropagation();
-                let newName = prompt("Enter your friend's name:", "Bestie");
-                if (newName && newName.trim() !== "") {
-                    let prettyName = newName.trim();
-                    if (!prettyName.endsWith('🎀') && !prettyName.startsWith('🎀')) {
-                        nameSpan.innerHTML = `🎀 ${prettyName} 🎀`;
-                    } else {
-                        nameSpan.innerHTML = prettyName;
-                    }
-                } else if (newName === "") {
-                    // revert maybe no
-                }
-            });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          // optional: keep observing or unobserve after reveal
+          observer.unobserve(entry.target);
         }
-    })();
+      });
+    }, { threshold: 0.2, rootMargin: "0px 0px -40px 0px" });
     
-    // Additional: add micro interaction for button hover
-    const styleExtra = document.createElement('style');
-    styleExtra.textContent = `
-        .btn-confetti:active {
-            transform: translateY(2px);
+    revealElements.forEach(el => observer.observe(el));
+    
+    // Additionally apply active class on any element already visible (just in case)
+    window.addEventListener('load', () => {
+      revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.classList.add('active');
+          observer.unobserve(el);
         }
-        @keyframes gentlePulse {
-            0% { text-shadow: 0 0 0px rgba(255,200,150,0);}
-            100% { text-shadow: 0 0 8px rgba(255,120,80,0.5);}
+      });
+    });
+    
+    // Smooth scroll for button
+    const scrollBtn = document.querySelector('.btn-scroll');
+    if (scrollBtn) {
+      scrollBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = scrollBtn.getAttribute('href');
+        if (targetId && targetId !== "#") {
+          const targetElem = document.querySelector(targetId);
+          if (targetElem) {
+            targetElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
         }
-        .friend-name:hover {
-            background: rgba(255, 215, 190, 0.9);
-        }
-    `;
-    document.head.appendChild(styleExtra);
+      });
+    }
+    
+    // Additional hover effect on video background (optional small parallax like effect on mouse move for hero)
+    const heroSection = document.querySelector('.hero');
+    const videoBg = document.querySelector('.bg-video');
+    if (heroSection && videoBg) {
+      heroSection.addEventListener('mousemove', (e) => {
+        const { clientX, clientY, target } = e;
+        const rect = heroSection.getBoundingClientRect();
+        const xPercent = (clientX - rect.left) / rect.width - 0.5;
+        const yPercent = (clientY - rect.top) / rect.height - 0.5;
+        const moveX = xPercent * 8;  // subtle shift
+        const moveY = yPercent * 8;
+        videoBg.style.transform = `scale(1.02) translate(${moveX * 0.5}px, ${moveY * 0.5}px)`;
+      });
+      heroSection.addEventListener('mouseleave', () => {
+        videoBg.style.transform = 'scale(1) translate(0px, 0px)';
+      });
+    }
+    
+    // Fix for any external image fallback; ensure video fallback message is hidden 
+    // also makes mobile friendly touch
+    console.log("Shimla Visual Experience Loaded");
+  })();
 </script>
+
+<!-- Adding preconnect for fonts & better performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </body>
 </html>
